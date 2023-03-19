@@ -10,7 +10,7 @@ import com.example.tabletennis.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding bind;
     int count1, count2= 0;
-    int scoreDifference = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showScore() {
-
         bind.btnPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,18 +40,18 @@ public class MainActivity extends AppCompatActivity {
                 bind.playStatus.setText("");
 
                 count1 ++;
-                scoreDifference = count1 - count2;
+
                 bind.txtScorePlayer1.setText(String.valueOf(count1));
 
                 if (count1 > count2 ) {
-                    bind.playStatus.setText("Player 1 has a advantage");}
-                else if (count1 ==9 && count2 ==9){
-                    bind.playStatus.setText("Duse Ball");
-                }else
+                    bind.playStatus.setText("Player 1 has a advantage");
+                } else if (count1 == 9 && count2 == 9) {
+                    bind.playStatus.setText("Deuce");
+                } else {
                     bind.playStatus.setText("Draw");
+                }
 
-
-                if (count1 >= 10 && scoreDifference >= 2){
+                if (count1 >= 11 && count1 - count2 >= 2){
                     bind.txtWinnerStatus.setText("Player 1");
                     bind.tvPlayerLoseStatus.setText("Player 2");
                     bind.tvPlayerLoseStatusTitle.setText(" lost.");
@@ -63,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     bind.txtScorePlayer2.setText("0");
                 }
             }
-
-          
         });
 
         bind.btnPlayer2.setOnClickListener(new View.OnClickListener() {
@@ -81,25 +78,95 @@ public class MainActivity extends AppCompatActivity {
 
                 if (count2 > count1 ){
                     bind.playStatus.setText("Player 2 has a advantage");
-                }else
+                } else if (count1 == 9 && count2 == 9) {
+                    bind.playStatus.setText("Deuce");
+                } else {
                     bind.playStatus.setText("Draw");
+                }
 
-                if (count2 == 10){
+                if (count2 >= 11 && count2 - count1 >= 2){
                     bind.txtWinnerStatus.setText("Player 2");
                     bind.tvPlayerLoseStatus.setText("Player 1");
                     bind.tvPlayerLoseStatusTitle.setText(" lost.");
-                    
+
                     //reset
                     count2 = 0;
                     count1 = 0;
                     bind.txtScorePlayer1.setText("0");
                     bind.txtScorePlayer2.setText("0");
-
-
                 }
-
             }
         });
+
+//        bind.btnPlayer1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                bind.txtWinnerStatus.setText("");
+//                bind.tvPlayerLoseStatus.setText("");
+//                bind.tvPlayerLoseStatusTitle.setText("");
+//                bind.playStatus.setText("");
+//
+//                count1 ++;
+//
+//                bind.txtScorePlayer1.setText(String.valueOf(count1));
+//
+//                if (count1 > count2 ) {
+//                    bind.playStatus.setText("Player 1 has a advantage");}
+//                else if (count1 ==9 && count2 ==9){
+//                    bind.playStatus.setText("Duse Ball");
+//                }else
+//                    bind.playStatus.setText("Draw");
+//
+//
+//                if (count1 == 10){
+//                    bind.txtWinnerStatus.setText("Player 1");
+//                    bind.tvPlayerLoseStatus.setText("Player 2");
+//                    bind.tvPlayerLoseStatusTitle.setText(" lost.");
+//                    //reset
+//                    count1 = 0;
+//                    count2 = 0;
+//                    bind.txtScorePlayer1.setText("0");
+//                    bind.txtScorePlayer2.setText("0");
+//                }
+//            }
+//
+//
+//        });
+//
+//        bind.btnPlayer2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                bind.txtWinnerStatus.setText("");
+//                bind.tvPlayerLoseStatus.setText("");
+//                bind.tvPlayerLoseStatusTitle.setText("");
+//                bind.playStatus.setText("");
+//
+//                count2 ++;
+//                bind.txtScorePlayer2.setText(String.valueOf(count2));
+//
+//                if (count2 > count1 ){
+//                    bind.playStatus.setText("Player 2 has a advantage");
+//                }else
+//                    bind.playStatus.setText("Draw");
+//
+//                if (count2 == 10){
+//                    bind.txtWinnerStatus.setText("Player 2");
+//                    bind.tvPlayerLoseStatus.setText("Player 1");
+//                    bind.tvPlayerLoseStatusTitle.setText(" lost.");
+//
+//                    //reset
+//                    count2 = 0;
+//                    count1 = 0;
+//                    bind.txtScorePlayer1.setText("0");
+//                    bind.txtScorePlayer2.setText("0");
+//
+//
+//                }
+//
+//            }
+//        });
     }
 
 
